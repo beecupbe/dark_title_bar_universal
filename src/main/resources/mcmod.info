@@ -1,0 +1,13 @@
+[
+    {
+        "modid": "darktitlebar",
+        "name": "Dark Title Bar: Universal",
+        "description": "A mod to change Minecraft window color to dark. Win10 1809+ or Win11 are supported.",
+        "version": "1.0.0",
+        "logoFile": "assets/logo.png",
+        "url": "https://www.curseforge.com/minecraft/mc-mods/dark-title-bar-universal/files/all?showAlphaFiles=show",
+        "authorList": ["Beecube31"],
+        "credits": "NekitFbetc <3",
+        "dependencies": []
+    }
+]

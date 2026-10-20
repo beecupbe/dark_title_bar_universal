@@ -1,0 +1,44 @@
+plugins { id 'java' }
+
+group = 'dev.beecube31.darktitleuni'
+version = '1.0.0'
+base { archivesName = 'Dark-Title-Bar-Universal' }
+
+repositories { mavenCentral() }
+
+sourceSets { stubs }
+
+configurations { bundledJna }
+
+dependencies {
+    // JNA 3.4.0 from 1.8
+    compileOnly 'net.java.dev.jna:jna:3.4.0'
+    compileOnly sourceSets.stubs.output
+
+    // Included only for Minecraft 1.7.10, which does not have JNA lib
+    bundledJna 'net.java.dev.jna:jna:5.14.0'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 8
+    options.encoding = 'UTF-8'
+}
+
+def stripJna = tasks.register('stripJna', Jar) {
+    archiveFileName = 'jna-5.14.0-win.jar'
+    destinationDirectory = layout.buildDirectory.dir('bundled')
+    from({ zipTree(configurations.bundledJna.singleFile) }) {
+        include '**/*.class', 'com/sun/jna/win32-*/**', 'META-INF/LICENSE*'
+    }
+}
+
+jar {
+    from(stripJna) { into 'META-INF/darktitlebar'; rename { it + '.bin' } }
+    manifest {
+        attributes(
+            // LaunchWrapper (Forge 1.7.10–1.12.2).
+            'TweakClass': 'dev.beecube31.darktitleuni.legacy.DarkTitleBarTweaker',
+            'Automatic-Module-Name': 'dev.beecube31.darktitleuni'
+        )
+    }
+}
