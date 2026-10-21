@@ -2,7 +2,7 @@
 
 # Dark Title Bar (Universal)
 
-**A dark native Windows title bar for Minecraft — one jar from 1.7.10 to 26.x.**
+**A dark native Windows title bar for Minecraft — one jar from 1.6.4 to 26.x.**
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.8%20→%2026.x-62B47A)
 ![Loaders](https://img.shields.io/badge/loaders-Forge%20%7C%20NeoForge%20%7C%20Fabric-blue)
@@ -19,7 +19,7 @@ It does **not** touch Minecraft code: no Mixins, no coremod transformers, etc. I
 
 ## Features
 
-- **One jar for everything** — Forge, NeoForge, Fabric, Quilt from 1.8 to the newest releases
+- **One jar for everything** — Forge, NeoForge, Fabric, Quilt from 1.6.4 to the newest releases
 - **Zero dependencies** — no Fabric API, no Mixins, etc.
 - **Conflict-free** — Minecraft classes are never modified, so it fits into any modpack without any errors.
 
@@ -27,7 +27,7 @@ It does **not** touch Minecraft code: no Mixins, no coremod transformers, etc. I
 
 | Minecraft | Loader | How it loads |
 |---|---|---|
-| 1.8 – 1.12.2 | Forge | LaunchWrapper `TweakClass` |
+| 1.6.4 – 1.12.2 | Forge | LaunchWrapper `TweakClass` |
 | 1.13 – 26.x | Forge | `META-INF/mods.toml` |
 | 1.20.1 | NeoForge | `META-INF/mods.toml` |
 | 1.20.2 – 26.x | NeoForge | `mods.toml` / `neoforge.mods.toml` |
@@ -58,7 +58,7 @@ To confirm it works, look for this line in the log:
 3. It calls `DwmSetWindowAttribute` with `DWMWA_USE_IMMERSIVE_DARK_MODE` (attribute `20`, falling back to `19` for old Windows 10 builds, like 1809-1909) and asks Windows to redraw the frame.
 4. A background thread keeps watching for new windows of the process, so recreated windows get darkened as well.
 
-Windows calls go through JNA, which Minecraft already ships starting with 1.8+ versions. Minecraft 1.8 has no JNA, so the mod carries a trimmed copy of JNA 5.14.0 (classes plus `jnidispatch.dll` for x86, x64 and ARM64). It extracts that copy to `%TEMP%\darktitlebar\` and loads it in an isolated class loader, so it never clashes with other JNA copies in a modpack. If JNA is already on the classpath, the mod uses that instead.
+Windows calls go through JNA, which Minecraft already ships starting with 1.8.8+ versions. Minecraft 1.6.4-1.8 has no JNA, so the mod carries a trimmed copy of JNA 5.14.0 (classes plus `jnidispatch.dll` for x86, x64 and ARM64). It extracts that copy to `%TEMP%\darktitlebar\` and loads it in an isolated class loader, so it never clashes with other JNA copies in a modpack. If JNA is already on the classpath, the mod uses that instead.
 
 ## Credits
 
