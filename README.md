@@ -4,7 +4,7 @@
 
 **A dark native Windows title bar for Minecraft — one jar from 1.6.4 to 26.x.**
 
-![Minecraft](https://img.shields.io/badge/Minecraft-1.8%20→%2026.x-62B47A)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.6.4%20→%2026.x-62B47A)
 ![Loaders](https://img.shields.io/badge/loaders-Forge%20%7C%20NeoForge%20%7C%20Fabric-blue)
 ![Side](https://img.shields.io/badge/side-client-lightgrey)
 ![License](https://img.shields.io/badge/license-MIT-green)
